@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  maven:
+    container_name: lgs-maven
+    build: 
+      context: maven
+      network: host
+    network_mode: host
+    volumes:
+      - ./:/usr/src/project
+      - ./maven/.m2:/root/.m2
+    working_dir: ${PROJECT_BASE_PATH:-/usr/src/project/app}
+   
+
+networks:
+  lgs-network:
+    driver: bridge

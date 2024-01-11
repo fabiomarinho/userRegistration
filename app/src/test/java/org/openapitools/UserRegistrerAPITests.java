@@ -10,11 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-//@SpringBootTest
 @WebMvcTest(RegisterApiController.class)
 class UserRegistrerAPITests {
 
@@ -23,12 +20,6 @@ class UserRegistrerAPITests {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-    // @Test
-    // void contextLoads() {
-        
-    //     System.out.println(" ********************** ");
-    // }
 
     @Test
     void testRegisterUser() throws Exception {
@@ -223,7 +214,5 @@ class UserRegistrerAPITests {
    
                 
     }
-
-   
 
 }

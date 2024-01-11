@@ -19,6 +19,8 @@ Write an API microservice using Spring Boot to simulate user registration. Write
 
 - Need to have JUnit Tests
 
-# Requirements
 
-- docker and docker-compose
+# Strategy
+
+- Design-first was used to generate base code. Open API specification is in openApi folder
+- Used docker, to run openapi generator CLI. Command defined in openApiGen.sh

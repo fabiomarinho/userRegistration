@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   maven:
-    container_name: lgs-maven
+    container_name: pnc-maven
     build: 
       context: maven
       network: host
@@ -11,9 +11,18 @@ services:
     volumes:
       - ./:/usr/src/project
       - ./maven/.m2:/root/.m2
-    working_dir: ${PROJECT_BASE_PATH:-/usr/src/project/app}
-   
+    command: ./run.sh
+    
+  app:
+    container_name: pnc-app
+    build: 
+      context: app
+      network: host
+    environment:
+      - SERVER_SERVLET_CONTEXT_PATH=/api  
+    ports:
+      - 8080:8080
 
 networks:
-  lgs-network:
+  pnc-network:
     driver: bridge

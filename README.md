@@ -18,3 +18,7 @@ Write an API microservice using Spring Boot to simulate user registration. Write
 - Project must use Maven or Gradle to build. Generate a spring boot project here: Spring Initializr
 
 - Need to have JUnit Tests
+
+# Requirements
+
+- docker and docker-compose

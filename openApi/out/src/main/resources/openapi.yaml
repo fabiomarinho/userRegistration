@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  description: REST API for user registration
+  title: User Registration API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /register:
+    post:
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistrationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRegistrationResponse'
+          description: User registration successful
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRegistrationErrorResponse'
+          description: Bad request
+      summary: Register a user
+      x-content-type: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    UserRegistrationRequest:
+      example:
+        password: password
+        ipAddress: ipAddress
+        username: username
+      properties:
+        username:
+          type: string
+        password:
+          minLength: 9
+          pattern: "^(?=.*[A-Z])(?=.*\\d)(?=.*[_#$%.])[A-Za-z\\d_#$%.]{9,}$"
+          type: string
+        ipAddress:
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$"
+          type: string
+      required:
+      - ipAddress
+      - password
+      - username
+      type: object
+    UserRegistrationResponse:
+      example:
+        message: message
+        uuid: uuid
+      properties:
+        message:
+          type: string
+        uuid:
+          type: string
+      type: object
+    UserRegistrationErrorResponse:
+      properties:
+        message:
+          type: string
+      type: object
